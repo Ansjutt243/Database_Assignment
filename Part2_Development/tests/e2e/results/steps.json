@@ -1,0 +1,302 @@
+[
+  {
+    "flow": "01 Log-in and account lock-out",
+    "step": "Wrong password shows a general error (does not say which part is wrong)",
+    "result": "Pass"
+  },
+  {
+    "flow": "01 Log-in and account lock-out",
+    "step": "Five wrong passwords lock the account of f.mehmood",
+    "result": "Pass"
+  },
+  {
+    "flow": "01 Log-in and account lock-out",
+    "step": "Even the correct password is refused while locked",
+    "result": "Pass"
+  },
+  {
+    "flow": "01 Log-in and account lock-out",
+    "step": "Administrator w.anwar unlocks the account in User Accounts",
+    "result": "Pass"
+  },
+  {
+    "flow": "01 Log-in and account lock-out",
+    "step": "f.mehmood can log in again and reaches the Main Control Page",
+    "result": "Pass"
+  },
+  {
+    "flow": "01 Log-in and account lock-out",
+    "step": "Log out ends the session",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Office: add \"Test Office Murree\"",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Office: server-side check rejects an invalid phone number",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Office: edit the phone number and save",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Office: delete \"Test Office Murree\" (after \"Are you sure?\")",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Office in use (Lahore) cannot be deleted - clear message",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Hardware: add laptop TEST-HW-0001",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Hardware: edit the model",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Hardware: install licensed software on the laptop",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Hardware: remove the installed software",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Hardware: delete TEST-HW-0001",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Software: add \"Test Analytics Suite 1.0\"",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Software: edit the version to 1.1",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Licence: add LIC-TEST-0001 (10 seats) for the new software",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Licence: edit seats to 20",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Employee: add E0901 Sara Test",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Employee: edit the job title",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Technician: make Sara Test a technician with two skills",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Technician: edit - mark as on leave and add a third skill",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "User: passwords that do not match are rejected",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "User: create account s.test (Technician)",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "User: change the role of s.test to Helpdesk Operator",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "User: disable and then unlock s.test",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "New user s.test logs in with the password set by the admin",
+    "result": "Pass"
+  },
+  {
+    "flow": "02 Admin - registers and users (add, edit, delete)",
+    "step": "Employee leaves: enter an End Date (record is kept, not deleted)",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Main Control Page: operator buttons, reports locked",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Log New Call: choosing the caller fills job title and office",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Typing the serial number fills equipment, warranty and installed software",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Problem details entered; the problem number is shown before saving",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Save & Assign: same problem number confirmed after saving",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Assign Technician: operator chooses Usman Tariq",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Follow-up call: the caller rings again about the same problem",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Open Problems List: filter High priority, the new problem is listed",
+    "result": "Pass"
+  },
+  {
+    "flow": "03 Operator - log, assign, follow-up and search a call",
+    "step": "Search Problem: full history with both calls",
+    "result": "Pass"
+  },
+  {
+    "flow": "04 Technician - resolve own job",
+    "step": "My open jobs lists the new problem",
+    "result": "Pass"
+  },
+  {
+    "flow": "04 Technician - resolve own job",
+    "step": "Resolve: time taken and resolution notes entered",
+    "result": "Pass"
+  },
+  {
+    "flow": "04 Technician - resolve own job",
+    "step": "Mark as Resolved: the problem is closed",
+    "result": "Pass"
+  },
+  {
+    "flow": "05 Manager - management reports R1 to R6",
+    "step": "Report R1 shown on screen",
+    "result": "Pass"
+  },
+  {
+    "flow": "05 Manager - management reports R1 to R6",
+    "step": "Report R2 shown on screen",
+    "result": "Pass"
+  },
+  {
+    "flow": "05 Manager - management reports R1 to R6",
+    "step": "Report R3 shown on screen",
+    "result": "Pass"
+  },
+  {
+    "flow": "05 Manager - management reports R1 to R6",
+    "step": "Report R4 shown on screen",
+    "result": "Pass"
+  },
+  {
+    "flow": "05 Manager - management reports R1 to R6",
+    "step": "Report R5 shown on screen",
+    "result": "Pass"
+  },
+  {
+    "flow": "05 Manager - management reports R1 to R6",
+    "step": "Report R6 shown on screen",
+    "result": "Pass"
+  },
+  {
+    "flow": "06 Maintenance - backup, restore, compact and integrity check",
+    "step": "Operator: Back Up Now creates a backup file",
+    "result": "Pass"
+  },
+  {
+    "flow": "06 Maintenance - backup, restore, compact and integrity check",
+    "step": "Restore with the wrong confirmation date is cancelled",
+    "result": "Pass"
+  },
+  {
+    "flow": "06 Maintenance - backup, restore, compact and integrity check",
+    "step": "Restore with the correct date restores the backup",
+    "result": "Pass"
+  },
+  {
+    "flow": "06 Maintenance - backup, restore, compact and integrity check",
+    "step": "Compact Now optimises the tables",
+    "result": "Pass"
+  },
+  {
+    "flow": "06 Maintenance - backup, restore, compact and integrity check",
+    "step": "Administrator: Run Integrity Check passes",
+    "result": "Pass"
+  },
+  {
+    "flow": "06 Maintenance - backup, restore, compact and integrity check",
+    "step": "Maintenance log records every action with user and time",
+    "result": "Pass"
+  },
+  {
+    "flow": "07 Access control - each role only sees its own functions",
+    "step": "Operator cannot open Management Reports",
+    "result": "Pass"
+  },
+  {
+    "flow": "07 Access control - each role only sees its own functions",
+    "step": "Operator cannot open User Accounts",
+    "result": "Pass"
+  },
+  {
+    "flow": "07 Access control - each role only sees its own functions",
+    "step": "Operator sees registers as view only (no Add button)",
+    "result": "Pass"
+  },
+  {
+    "flow": "07 Access control - each role only sees its own functions",
+    "step": "Technician cannot log a new call",
+    "result": "Pass"
+  },
+  {
+    "flow": "07 Access control - each role only sees its own functions",
+    "step": "Manager cannot assign technicians",
+    "result": "Pass"
+  },
+  {
+    "flow": "07 Access control - each role only sees its own functions",
+    "step": "Opening a page without logging in goes to the Sign in page",
+    "result": "Pass"
+  }
+]

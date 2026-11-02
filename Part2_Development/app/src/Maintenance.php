@@ -236,7 +236,7 @@ final class Maintenance
         $opt = tempnam(sys_get_temp_dir(), 'mlh');
         chmod($opt, 0600);
         file_put_contents($opt, "[client]\nuser=\"$user\"\npassword=\"$pass\"\n"
-            . ($cfg['host'] === 'localhost' ? "socket=\"{$cfg['socket']}\"\n" : '')
+            . ($cfg['host'] === 'localhost' && file_exists($cfg['socket']) ? "socket=\"{$cfg['socket']}\"\n" : '')
             . "host=\"{$cfg['host']}\"\nport={$cfg['port']}\n");
 
         $cmd = array_merge([$bin, '--defaults-extra-file=' . $opt], $args, [$cfg['database']]);

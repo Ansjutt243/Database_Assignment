@@ -1,0 +1,533 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/bin/node",
+      "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/playwright.config.js",
+    "rootDir": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "flow.spec.js"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e",
+        "snapshotDir": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "flow.spec.js",
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://127.0.0.1:8080",
+          "channel": "chrome",
+          "headless": true,
+          "viewport": {
+            "width": 1280,
+            "height": 800
+          },
+          "video": {
+            "mode": "on",
+            "size": {
+              "width": 1280,
+              "height": 800
+            }
+          },
+          "actionTimeout": 15000,
+          "ignoreHTTPSErrors": true,
+          "launchOptions": {
+            "slowMo": 250
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flow.spec.js",
+      "file": "flow.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "01 Log-in and account lock-out",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:23:17.747Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-01-Log-in-and-account-lock-out/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-0059854fe57fea1ab47f",
+          "file": "flow.spec.js",
+          "line": 98,
+          "column": 1
+        },
+        {
+          "title": "02 Admin - registers and users (add, edit, delete)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 75664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:23:41.681Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-02-Admin---registers-and-users-add-edit-delete-/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-011e62354dcd9496baef",
+          "file": "flow.spec.js",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "03 Operator - log, assign, follow-up and search a call",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25196,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:24:57.361Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-03-Operator---log-assign-follow-up-and-search-a-call/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-1ce4393adbca9cb8ad6f",
+          "file": "flow.spec.js",
+          "line": 370,
+          "column": 1
+        },
+        {
+          "title": "04 Technician - resolve own job",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10150,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:25:22.571Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-04-Technician---resolve-own-job/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-20f5366d816e86f70f87",
+          "file": "flow.spec.js",
+          "line": 441,
+          "column": 1
+        },
+        {
+          "title": "05 Manager - management reports R1 to R6",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18859,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:25:32.734Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-05-Manager---management-reports-R1-to-R6/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-8986fdb625d37ed91c92",
+          "file": "flow.spec.js",
+          "line": 465,
+          "column": 1
+        },
+        {
+          "title": "06 Maintenance - backup, restore, compact and integrity check",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20080,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:25:51.605Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-06-Maintenance---back-c2a82-compact-and-integrity-check/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-c46a401eb0b9520d1e82",
+          "file": "flow.spec.js",
+          "line": 481,
+          "column": 1
+        },
+        {
+          "title": "07 Access control - each role only sees its own functions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "serial",
+                  "location": {
+                    "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                    "line": 0,
+                    "column": 0
+                  }
+                }
+              ],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18764,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-02T11:26:11.698Z",
+                  "annotations": [
+                    {
+                      "type": "serial",
+                      "location": {
+                        "file": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/flow.spec.js",
+                        "line": 0,
+                        "column": 0
+                      }
+                    }
+                  ],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/muhammad.ans/Unit4_Database_Assignment/Part2_Development/tests/e2e/results/raw/flow-07-Access-control---e-269e7-only-sees-its-own-functions/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "27489474ad7ec2ac13b7-09af26d5b61d029190bb",
+          "file": "flow.spec.js",
+          "line": 527,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-02T11:23:17.093Z",
+    "duration": 193736.313,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

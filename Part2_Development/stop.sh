@@ -1,3 +1,5 @@
 #!/bin/zsh
 # ML IT Helpdesk - stop the MySQL server (asks for the root password)
-"$HOME/mysql/bin/mysqladmin" --socket=/tmp/mysql.sock -uroot -p shutdown && echo "MySQL stopped."
+cd "$(dirname "$0")"
+source deploy/find_tools.sh
+"$MYSQLADMIN" -uroot -p shutdown && echo "MySQL stopped."

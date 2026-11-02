@@ -26,3 +26,4 @@ Part2_Development/tests/e2e/playwright-report/
 # Word lock files and raw Playwright artifacts
 ~$*
 Part2_Development/tests/e2e/results/raw/
+Part2_Development/tests/e2e/results/before_e2e.sql

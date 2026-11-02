@@ -1,24 +1,34 @@
 #!/bin/zsh
 # =====================================================================
-# ML IT Helpdesk - start the system on this computer
-#   1. starts MySQL (if it is not already running)
+# ML IT Helpdesk - start the system on this computer (macOS / Linux)
+#   1. checks MySQL is running (starts the portable ~/mysql if needed)
 #   2. starts the PHP web server on http://127.0.0.1:8080
 # Stop with Ctrl+C (MySQL keeps running; stop it with ./stop.sh).
+# Windows: start.bat
 # =====================================================================
 cd "$(dirname "$0")"
-MYSQL_HOME_DIR="$HOME/mysql"
-PHP="${PHP_BIN:-$HOME/php/php}"
+source deploy/find_tools.sh
 
-if "$MYSQL_HOME_DIR/bin/mysqladmin" --socket=/tmp/mysql.sock ping >/dev/null 2>&1; then
+if [[ -z "$PHP" ]]; then
+  echo "PHP was not found. Install PHP 8.2 or newer (see docs/01_Setup_Guide.md) or set PHP_BIN."
+  exit 1
+fi
+
+if "$MYSQLADMIN" ping >/dev/null 2>&1; then
   echo "MySQL is already running."
-else
+elif [[ -x "$HOME/mysql/bin/mysqld_safe" && -f "$HOME/mysql/my.cnf" ]]; then
   echo "Starting MySQL ..."
-  "$MYSQL_HOME_DIR/bin/mysqld_safe" --defaults-file="$MYSQL_HOME_DIR/my.cnf" > /dev/null 2>&1 &
+  "$HOME/mysql/bin/mysqld_safe" --defaults-file="$HOME/mysql/my.cnf" > /dev/null 2>&1 &
   for i in {1..30}; do
-    "$MYSQL_HOME_DIR/bin/mysqladmin" --socket=/tmp/mysql.sock ping >/dev/null 2>&1 && break
+    "$MYSQLADMIN" ping >/dev/null 2>&1 && break
     sleep 1
   done
   echo "MySQL started."
+else
+  echo "MySQL is not running. Start it first:"
+  echo "  MySQL installer (.dmg): System Settings -> MySQL -> Start MySQL Server"
+  echo "  Homebrew:               brew services start mysql@8.4"
+  exit 1
 fi
 
 echo "ML IT Helpdesk is running at  http://127.0.0.1:8080   (Ctrl+C to stop)"

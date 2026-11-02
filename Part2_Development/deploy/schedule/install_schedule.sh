@@ -10,7 +10,7 @@
 set -e
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 AGENTS="$HOME/Library/LaunchAgents"
-PHP="${PHP_BIN:-$HOME/php/php}"
+source "$ROOT/deploy/find_tools.sh"
 LOG="$ROOT/app/storage/logs/schedule.log"
 
 if [[ "$1" == "--remove" ]]; then
@@ -43,8 +43,12 @@ mkdir -p "$AGENTS"
   echo '</dict></plist>'
 } > "$AGENTS/com.ml.helpdesk.backup.plist"
 
-# --- start MySQL at log-in, so the 18:00 backup always finds it running
-cat > "$AGENTS/com.ml.helpdesk.mysql.plist" <<EOF
+# --- start the portable MySQL at log-in, so the 18:00 backup always finds it running
+# (MySQL from the .dmg installer or Homebrew already starts by itself)
+JOBS=(com.ml.helpdesk.backup)
+if [[ -x "$HOME/mysql/bin/mysqld_safe" && -f "$HOME/mysql/my.cnf" ]]; then
+  JOBS+=(com.ml.helpdesk.mysql)
+  cat > "$AGENTS/com.ml.helpdesk.mysql.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0"><dict>
@@ -55,8 +59,9 @@ cat > "$AGENTS/com.ml.helpdesk.mysql.plist" <<EOF
   <key>RunAtLoad</key><true/>
 </dict></plist>
 EOF
+fi
 
-for job in com.ml.helpdesk.mysql com.ml.helpdesk.backup; do
+for job in $JOBS; do
   launchctl unload "$AGENTS/$job.plist" 2>/dev/null || true
   launchctl load "$AGENTS/$job.plist"
 done

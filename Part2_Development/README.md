@@ -25,7 +25,7 @@ Log in as **`a.khan`** (Operator), **`u.tariq`** (Technician), **`i.shah`** (Man
 | [`database/`](database/) | SQL scripts 01–06, run in order |
 | [`app/`](app/) | PHP application. Only `app/public/` is served; `app/cli/` holds scheduled jobs |
 | [`deploy/`](deploy/) | Apache + HTTPS configuration, the nightly-backup schedule, and the Railway (cloud) set-up |
-| [`tests/`](tests/) | Performance test (NFR-01) and browser test (NFR-09) with their results |
+| [`tests/`](tests/) | Performance test (NFR-01), browser test (NFR-09) and the Playwright A-to-Z flow test with video (`tests/e2e/`) |
 | [`docs/`](docs/) | Step-by-step documentation and screenshots |
 
 ## Documentation
@@ -39,13 +39,14 @@ Log in as **`a.khan`** (Operator), **`u.tariq`** (Technician), **`i.shah`** (Man
 | 5 | [System Flows](docs/05_System_Flows.md) | DFDs and a flowchart plus steps for every function |
 | 6 | [Testing](docs/06_Testing.md) | Database, access, end-to-end, maintenance, performance and browser tests |
 | 7 | [Deploying online (Railway)](docs/07_Deployment_Railway.md) | Putting the system online with MySQL 8 + PHP containers, secure passwords, HTTPS |
+| 8 | [End-to-End Flow Test with Video](docs/08_E2E_Flow_Test.md) | Playwright A-to-Z test: 7 flows, 60 steps, add / edit / delete, one video per flow |
 
 ## Design Document → implementation status
 
 | Design Document item | Status | Where / evidence |
 |---|---|---|
 | UR-01 – UR-18 user requirements | ✅ | screens in `app/public/`; [Testing](docs/06_Testing.md) |
-| FR-01 – FR-16 functional requirements | ✅ | 41 database tests + 32 browser tests |
+| FR-01 – FR-16 functional requirements | ✅ | 41 database tests + 32 browser tests + 60-step Playwright flow test with video |
 | NFR-01 performance with 50,000 records | ✅ slowest report 0.98 s (limit 5 s) | `tests/performance_results.md` |
 | NFR-02 security (bcrypt, lock-out, 20-min timeout, least privilege) | ✅ | `Auth.php`, `04_security_roles.sql` |
 | NFR-03 usability (≤ 3 clicks to log a call, one layout, clear errors) | ✅ | Main → Log New Call → Save & Assign |

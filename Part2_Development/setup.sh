@@ -2,16 +2,17 @@
 # =====================================================================
 # ML IT Helpdesk - one-time database setup
 # Builds the mlhelpdesk database from scratch: tables, views, triggers,
-# procedures, pilot data and security roles, then runs the 38 tests.
+# procedures, pilot data and security roles, then runs the 41 tests.
 # WARNING: deletes any existing mlhelpdesk database.
-# Usage:  ./setup.sh
+# Usage:  ./setup.sh          (Windows: setup.bat)
 # =====================================================================
 set -e
-cd "$(dirname "$0")/database"
-MYSQL="${MYSQL_BIN:-$HOME/mysql/bin/mysql}"
+cd "$(dirname "$0")"
+source deploy/find_tools.sh
+cd database
 
-if ! "$HOME/mysql/bin/mysqladmin" --socket=/tmp/mysql.sock ping >/dev/null 2>&1; then
-  echo "MySQL is not running. Start it first with ./start.sh"
+if ! "$MYSQLADMIN" ping >/dev/null 2>&1; then
+  echo "MySQL is not running. Start it first (./start.sh starts the portable one)."
   exit 1
 fi
 

@@ -1,12 +1,13 @@
 # 06 – Testing
 
-Testing was done on five levels:
+Testing was done on six levels:
 
 1. **Database tests**: 41 automated tests inside MySQL (`database/06_validation_tests.sql`).
 2. **Access-control tests**: every page opened by every role, plus the MySQL accounts directly.
 3. **End-to-end tests**: complete flows through the web application, including maintenance.
 4. **Performance test**: 50,000 problem records (NFR-01).
 5. **Browser test**: a real browser over HTTPS, with screenshots (NFR-09).
+6. **A-to-Z flow test with video** (Playwright): 7 flows, 60 checked steps, add / edit / delete in every register, one video per flow. See [08 – End-to-End Flow Test with Video](08_E2E_Flow_Test.md).
 
 All results below are from the pilot system on 02/11/2026.
 
@@ -187,6 +188,7 @@ The slowest report (R6, with three result tables) took about 1 second, a fifth o
 | The performance test stopped and left its data behind | `ANALYZE TABLE` returns rows that were not read | rows read; leftovers removed automatically at the next start | PASS |
 | CLI scripts failed silently | the error handler was registered only for web pages | the handler now prints errors in the terminal too | PASS |
 | After a restore, managers could not run reports and the admin could not run the integrity check | MySQL deletes the EXECUTE rights on a procedure when the restore drops and recreates it; earlier tests only checked that operators were still refused | restore records the rights from `mysql.procs_priv` first and grants them again afterwards | PASS (two restores, then report, check, call logging and compact all work) |
+| Playwright test: technician could not resolve after the test reset the database | a plain `mysql < dump.sql` re-creates the procedures and so removes their EXECUTE rights (the same cause as the row above, outside the application) | `tests/e2e/run_e2e.sh` runs `04_security_roles.sql` after putting the database back | PASS (60/60 steps) |
 
 ---
 

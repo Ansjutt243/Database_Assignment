@@ -440,7 +440,7 @@ test('03 Operator - log, assign, follow-up and search a call', async ({ page }) 
 // ===================================================================== 04
 test('04 Technician - resolve own job', async ({ page }) => {
   await login(page, 'u.tariq');
-  await caption(page, 'Flow 4: IT Technician (u.tariq) resolves his own job', 1500);
+  await caption(page, 'Flow 4: IT Technician (u.tariq) resolves their own job', 1500);
 
   await step(page, 'My open jobs lists the new problem', async () => {
     await page.click('a:has-text("Resolve Problem")');
@@ -525,7 +525,8 @@ test('06 Maintenance - backup, restore, compact and integrity check', async ({ p
 
 // ===================================================================== 07
 test('07 Access control - each role only sees its own functions', async ({ page }) => {
-  await caption(page, 'Flow 7: Access control (Table 40 access matrix)', 300);
+  await page.goto('/index.php');
+  await caption(page, 'Flow 7: Access control (Table 40 access matrix)', 1500);
 
   await step(page, 'Operator cannot open Management Reports', async () => {
     await login(page, 'a.khan');
