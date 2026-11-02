@@ -1,0 +1,10 @@
+# Keep Unix line endings in the repository and on checkout, so the SQL
+# scripts (DELIMITER $$) and shell scripts work on every computer.
+# Windows batch files need CRLF.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jpg binary
+*.mp4 binary
+*.docx binary
+*.pdf binary

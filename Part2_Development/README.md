@@ -8,12 +8,26 @@ The working pilot system built from the Part 1 Design Document for Manzaneque Li
 
 ## Quick start
 
+Needs **MySQL 8** and **PHP 8.2+**. Step-by-step instructions for a new computer, Windows and macOS:
+[`Part3_Documentation/ML_Helpdesk_Installation_Guide.docx`](../Part3_Documentation/ML_Helpdesk_Installation_Guide.docx).
+
+**Windows** (MySQL runs as a service; PHP unzipped to `C:\php`):
+
+```bat
+cd Part2_Development
+setup.bat                           :: first time only: build the database + 41 tests
+start.bat                           :: application → http://127.0.0.1:8080
+windows\install_schedule.bat        :: optional: nightly backup at 18:00 (Mon–Sat)
+```
+
+**macOS / Linux:**
+
 ```bash
 cd Part2_Development
-./start.sh                          # MySQL + application  → http://127.0.0.1:8080
-./setup.sh                          # first time only (second terminal): build the database + 41 tests
+./setup.sh                          # first time only: build the database + 41 tests
+./start.sh                          # application → http://127.0.0.1:8080
 ./deploy/apache/start_apache.sh     # optional: HTTPS      → https://localhost:8443
-./deploy/schedule/install_schedule.sh   # once: nightly backup at 18:00 (Mon–Sat)
+./deploy/schedule/install_schedule.sh   # optional: nightly backup at 18:00 (Mon–Sat)
 ```
 
 Log in as **`a.khan`** (Operator), **`u.tariq`** (Technician), **`i.shah`** (Manager) or **`w.anwar`** (Admin). The password is **`Helpdesk2026`**.
@@ -24,7 +38,8 @@ Log in as **`a.khan`** (Operator), **`u.tariq`** (Technician), **`i.shah`** (Man
 |---|---|
 | [`database/`](database/) | SQL scripts 01–06, run in order |
 | [`app/`](app/) | PHP application. Only `app/public/` is served; `app/cli/` holds scheduled jobs |
-| [`deploy/`](deploy/) | Apache + HTTPS configuration, the nightly-backup schedule, and the Railway (cloud) set-up |
+| [`deploy/`](deploy/) | Apache + HTTPS configuration, the nightly-backup schedule, the Railway (cloud) set-up, and `find_tools.sh` (finds MySQL and PHP for the scripts) |
+| [`windows/`](windows/) | Windows helpers used by `setup.bat` / `start.bat`, and the Task Scheduler backup |
 | [`tests/`](tests/) | Performance test (NFR-01), browser test (NFR-09) and the Playwright A-to-Z flow test with video (`tests/e2e/`) |
 | [`docs/`](docs/) | Step-by-step documentation and screenshots |
 

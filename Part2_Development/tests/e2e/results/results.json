@@ -137,12 +137,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 23415,
+                  "duration": 23624,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:23:17.747Z",
+                  "startTime": "2026-11-02T13:22:37.658Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -195,12 +195,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 75664,
+                  "duration": 75778,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:23:41.681Z",
+                  "startTime": "2026-11-02T13:23:01.845Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -253,12 +253,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 25196,
+                  "duration": 25291,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:24:57.361Z",
+                  "startTime": "2026-11-02T13:24:17.642Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -311,12 +311,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10150,
+                  "duration": 10078,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:25:22.571Z",
+                  "startTime": "2026-11-02T13:24:42.946Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -369,12 +369,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 18859,
+                  "duration": 18843,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:25:32.734Z",
+                  "startTime": "2026-11-02T13:24:53.036Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -427,12 +427,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 20080,
+                  "duration": 20075,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:25:51.605Z",
+                  "startTime": "2026-11-02T13:25:11.891Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -485,12 +485,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 18764,
+                  "duration": 18796,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-11-02T11:26:11.698Z",
+                  "startTime": "2026-11-02T13:25:31.978Z",
                   "annotations": [
                     {
                       "type": "serial",
@@ -523,8 +523,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-11-02T11:23:17.093Z",
-    "duration": 193736.313,
+    "startTime": "2026-11-02T13:22:36.988Z",
+    "duration": 194202.543,
     "expected": 7,
     "skipped": 0,
     "unexpected": 0,

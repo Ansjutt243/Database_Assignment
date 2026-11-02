@@ -2,6 +2,8 @@
 
 How to install and run the ML IT Helpdesk pilot on a computer. Follow the steps in order.
 
+This guide describes the development computer (macOS, portable MySQL and PHP in the home folder). **To install on another computer, Windows or macOS, with the normal MySQL and PHP installers, follow the [Installation Guide](../../Part3_Documentation/ML_Helpdesk_Installation_Guide.docx).** The scripts find MySQL and PHP in either place: `setup.sh` / `start.sh` on macOS and Linux (through `deploy/find_tools.sh`), and `setup.bat` / `start.bat` on Windows.
+
 | Component | Version used in the pilot | Where it is installed |
 |---|---|---|
 | Database server | MySQL Community Server 8.0.31 (InnoDB, utf8mb4) | `~/mysql` |
