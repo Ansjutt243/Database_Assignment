@@ -1,0 +1,9 @@
+# Never upload secrets, local runtime data or test tools to Railway
+deploy/railway/app.env
+deploy/apache/ssl/
+deploy/apache/run/
+app/storage/backups/*.sql
+app/storage/logs/*.log
+tests/.venv/
+docs/screenshots/
+**/.DS_Store

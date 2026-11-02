@@ -43,10 +43,11 @@ if (PHP_SAPI === 'cli') {
     return;
 }
 
-// HTTPS directly, or through the local Apache front end (deploy/apache),
-// which tells us with X-Forwarded-Proto. Only trusted from this machine.
+// HTTPS directly, or through a front end that tells us with X-Forwarded-Proto:
+// the local Apache (deploy/apache) or a hosting proxy when TRUST_PROXY=1.
 $https = !empty($_SERVER['HTTPS'])
-    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https' && ($_SERVER['REMOTE_ADDR'] ?? '') === '127.0.0.1');
+    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https'
+        && (($_SERVER['REMOTE_ADDR'] ?? '') === '127.0.0.1' || config('trust_proxy')));
 
 // Secure session cookie (NFR-02): sent over HTTPS only when HTTPS is used
 session_set_cookie_params([

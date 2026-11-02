@@ -1,0 +1,16 @@
+[mysqld]
+# A new cloud volume contains a "lost+found" folder, which MySQL refuses
+# to initialise over, so the data lives in a sub-folder of the volume.
+datadir = /var/lib/mysql/data
+
+character-set-server = utf8mb4
+collation-server     = utf8mb4_0900_ai_ci
+default-time-zone    = '+05:00'
+
+# Lets the restore account rebuild triggers and procedures from a backup
+# without SUPER privilege (same as the pilot, see 04_security_roles.sql).
+log_bin_trust_function_creators = 1
+
+# The app container connects over the private network without TLS; the
+# PHP driver and the MariaDB backup tools both support this method.
+default_authentication_plugin = mysql_native_password

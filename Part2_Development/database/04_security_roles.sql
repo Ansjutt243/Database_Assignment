@@ -6,16 +6,25 @@
 --   * operators can log jobs but have NO execute right on report procedures
 --   * managers can run reports but have NO insert right on Problem/HelpdeskCall
 -- Run as root after 03_pilot_data.sql.
--- Passwords below are for the pilot only - change them before go-live and
--- keep them in Part2_Database/app/config/db.php.
+-- Passwords below are for the local pilot only. On a server they are
+-- replaced by deploy/railway/init_remote_db.sh with random passwords,
+-- which the application reads from environment variables
+-- (app/config/database.php).
+-- Accounts use host '%' so the application can also connect from another
+-- container (e.g. Railway). The local server only listens on 127.0.0.1.
 -- =====================================================================
 USE mlhelpdesk;
 
 -- Re-runnable: remove old accounts and roles first
+-- (accounts from earlier versions were created for 'localhost' only)
 DROP USER IF EXISTS 'ml_auth'@'localhost', 'ml_operator'@'localhost',
                     'ml_technician'@'localhost', 'ml_manager'@'localhost',
                     'ml_admin'@'localhost', 'ml_backup'@'localhost',
                     'ml_maint'@'localhost';
+DROP USER IF EXISTS 'ml_auth'@'%', 'ml_operator'@'%',
+                    'ml_technician'@'%', 'ml_manager'@'%',
+                    'ml_admin'@'%', 'ml_backup'@'%',
+                    'ml_maint'@'%';
 DROP ROLE IF EXISTS 'r_operator', 'r_technician', 'r_manager', 'r_admin';
 
 CREATE ROLE 'r_operator', 'r_technician', 'r_manager', 'r_admin';
@@ -142,34 +151,38 @@ GRANT EXECUTE ON PROCEDURE mlhelpdesk.sp_LogMaintenance TO 'r_admin';
 -- ---------------------------------------------------------------------
 -- Login accounts used by the PHP application
 -- ---------------------------------------------------------------------
-CREATE USER 'ml_operator'@'localhost'   IDENTIFIED BY 'Op#Pilot2026!';
-CREATE USER 'ml_technician'@'localhost' IDENTIFIED BY 'Tech#Pilot2026!';
-CREATE USER 'ml_manager'@'localhost'    IDENTIFIED BY 'Mgr#Pilot2026!';
-CREATE USER 'ml_admin'@'localhost'      IDENTIFIED BY 'Adm#Pilot2026!';
-GRANT 'r_operator'   TO 'ml_operator'@'localhost';
-GRANT 'r_technician' TO 'ml_technician'@'localhost';
-GRANT 'r_manager'    TO 'ml_manager'@'localhost';
-GRANT 'r_admin'      TO 'ml_admin'@'localhost';
-SET DEFAULT ROLE ALL TO 'ml_operator'@'localhost', 'ml_technician'@'localhost',
-                        'ml_manager'@'localhost',  'ml_admin'@'localhost';
+CREATE USER 'ml_operator'@'%'   IDENTIFIED BY 'Op#Pilot2026!';
+CREATE USER 'ml_technician'@'%' IDENTIFIED BY 'Tech#Pilot2026!';
+CREATE USER 'ml_manager'@'%'    IDENTIFIED BY 'Mgr#Pilot2026!';
+CREATE USER 'ml_admin'@'%'      IDENTIFIED BY 'Adm#Pilot2026!';
+GRANT 'r_operator'   TO 'ml_operator'@'%';
+GRANT 'r_technician' TO 'ml_technician'@'%';
+GRANT 'r_manager'    TO 'ml_manager'@'%';
+GRANT 'r_admin'      TO 'ml_admin'@'%';
+SET DEFAULT ROLE ALL TO 'ml_operator'@'%', 'ml_technician'@'%',
+                        'ml_manager'@'%',  'ml_admin'@'%';
 
 -- Used only by the log-in page: read accounts, update the lock-out counter.
-CREATE USER 'ml_auth'@'localhost' IDENTIFIED BY 'Auth#Pilot2026!';
-GRANT SELECT ON mlhelpdesk.AppUser  TO 'ml_auth'@'localhost';
-GRANT SELECT ON mlhelpdesk.Employee TO 'ml_auth'@'localhost';
-GRANT UPDATE (FailedLogins, IsActive) ON mlhelpdesk.AppUser TO 'ml_auth'@'localhost';
+CREATE USER 'ml_auth'@'%' IDENTIFIED BY 'Auth#Pilot2026!';
+GRANT SELECT ON mlhelpdesk.AppUser  TO 'ml_auth'@'%';
+GRANT SELECT ON mlhelpdesk.Employee TO 'ml_auth'@'%';
+GRANT UPDATE (FailedLogins, IsActive) ON mlhelpdesk.AppUser TO 'ml_auth'@'%';
 
 -- Used by "Back Up Database Now" (all users): read-only dump rights.
-CREATE USER 'ml_backup'@'localhost' IDENTIFIED BY 'Bak#Pilot2026!';
-GRANT SELECT, SHOW VIEW, TRIGGER, LOCK TABLES, EVENT ON mlhelpdesk.* TO 'ml_backup'@'localhost';
-GRANT SHOW_ROUTINE ON *.* TO 'ml_backup'@'localhost';
+CREATE USER 'ml_backup'@'%' IDENTIFIED BY 'Bak#Pilot2026!';
+GRANT SELECT, SHOW VIEW, TRIGGER, LOCK TABLES, EVENT ON mlhelpdesk.* TO 'ml_backup'@'%';
+GRANT SHOW_ROUTINE ON *.* TO 'ml_backup'@'%';
 -- the scheduled nightly backup logs itself (no user logged in)
-GRANT EXECUTE ON PROCEDURE mlhelpdesk.sp_LogMaintenance TO 'ml_backup'@'localhost';
+GRANT EXECUTE ON PROCEDURE mlhelpdesk.sp_LogMaintenance TO 'ml_backup'@'%';
 
 -- Used by Restore and Compact (Helpdesk Operators only - checked by the app
 -- before this account is used, and by sp_LogMaintenance / sp_CompactDatabase).
-CREATE USER 'ml_maint'@'localhost' IDENTIFIED BY 'Mnt#Pilot2026!';
-GRANT ALL PRIVILEGES ON mlhelpdesk.* TO 'ml_maint'@'localhost';
+CREATE USER 'ml_maint'@'%' IDENTIFIED BY 'Mnt#Pilot2026!';
+GRANT ALL PRIVILEGES ON mlhelpdesk.* TO 'ml_maint'@'%' WITH GRANT OPTION;
+-- Restore drops and recreates the procedures, and MySQL deletes the EXECUTE
+-- rights on a procedure when it is dropped. The restore therefore reads the
+-- rights first (mysql.procs_priv) and grants them again afterwards.
+GRANT SELECT ON mysql.procs_priv TO 'ml_maint'@'%';
 
 -- With binary logging on, MySQL only lets SUPER users create triggers and
 -- routines. This lets the restore account rebuild them from a backup
@@ -179,5 +192,5 @@ SET PERSIST log_bin_trust_function_creators = ON;
 FLUSH PRIVILEGES;
 
 -- Quick check
-SHOW GRANTS FOR 'ml_operator'@'localhost' USING 'r_operator';
-SHOW GRANTS FOR 'ml_manager'@'localhost'  USING 'r_manager';
+SHOW GRANTS FOR 'ml_operator'@'%' USING 'r_operator';
+SHOW GRANTS FOR 'ml_manager'@'%'  USING 'r_manager';

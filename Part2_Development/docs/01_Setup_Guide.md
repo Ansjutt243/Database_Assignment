@@ -137,7 +137,7 @@ Each scheduled backup appears in the Maintenance log as **Scheduled backup / Sys
 | Test | Command | Checks |
 |---|---|---|
 | Performance (NFR-01) | `~/php/php tests/performance_test.php` | 50,000 problems: look-ups < 2 s, reports < 5 s. Removes its data afterwards |
-| Browser (NFR-09) | `pip3 install websocket-client` then `python3 tests/browser_test.py chrome` (or `firefox`) | Real browser: auto-fill, dialogs, roles, JavaScript errors. Saves screenshots to `docs/screenshots/` |
+| Browser (NFR-09) | `./tests/run_browser_test.sh chrome` (or `firefox`). The first run creates `tests/.venv` | Real browser: auto-fill, dialogs, roles, JavaScript errors. Saves screenshots to `docs/screenshots/` |
 
 ## Step 9 – Before go-live (production checklist)
 

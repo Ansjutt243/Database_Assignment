@@ -17,8 +17,12 @@ return [
     // Section 12: backups (time-stamped .sql files, last 14 kept)
     'backup_dir'      => dirname(__DIR__) . '/storage/backups',
     'backup_keep'     => 14,
-    'mysqldump_bin'   => getenv('HOME') . '/mysql/bin/mysqldump',   // pilot
-    'mysql_bin'       => getenv('HOME') . '/mysql/bin/mysql',       // pilot
+    'mysqldump_bin'   => getenv('MYSQLDUMP_BIN') ?: getenv('HOME') . '/mysql/bin/mysqldump',
+    'mysql_bin'       => getenv('MYSQL_BIN') ?: getenv('HOME') . '/mysql/bin/mysql',
+
+    // Behind a hosting proxy that terminates HTTPS (e.g. Railway) set
+    // TRUST_PROXY=1 so X-Forwarded-Proto is trusted for the Secure cookie.
+    'trust_proxy'     => getenv('TRUST_PROXY') === '1',
 
     // Errors are written here, never shown to users
     'log_file'        => dirname(__DIR__) . '/storage/logs/app.log',

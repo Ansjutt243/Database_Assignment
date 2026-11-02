@@ -23,8 +23,8 @@ final class Database
         }
         [$user, $pass] = $cfg['accounts'][$role];
 
-        // Prefer the local Unix socket; fall back to TCP
-        $dsn = file_exists($cfg['socket'])
+        // Local server: Unix socket. Remote server (e.g. Railway): TCP.
+        $dsn = $cfg['host'] === 'localhost' && file_exists($cfg['socket'])
             ?"mysql:unix_socket={$cfg['socket']};dbname={$cfg['database']};charset={$cfg['charset']}"
             : "mysql:host={$cfg['host']};port={$cfg['port']};dbname={$cfg['database']};charset={$cfg['charset']}";
 

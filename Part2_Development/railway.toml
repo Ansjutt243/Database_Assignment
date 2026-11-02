@@ -1,0 +1,7 @@
+# Railway: build the application service from ./Dockerfile (not Railpack)
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+restartPolicyType = "ON_FAILURE"

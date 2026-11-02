@@ -77,6 +77,10 @@ final class Maintenance
             return self::finish('Restore', $name, false, 'Restore cancelled: the safety backup failed.');
         }
 
+        // MySQL deletes the EXECUTE rights on a procedure when the restore
+        // drops it, so remember them now and grant them again afterwards.
+        $rights = self::procedureRights();
+
         [$code, $err] = self::load($name);
         if ($code !== 0) {
             error_log('[' . date('c') . '] restore failed: ' . $err);
@@ -85,12 +89,39 @@ final class Maintenance
             if ($back !== 0) {
                 error_log('[' . date('c') . '] safety reload failed: ' . $err2);
             }
+            self::regrant($rights);
             return self::finish('Restore', $name, false, $back === 0
                 ? 'Restore failed, so the data from just before the restore was put back. The error has been logged.'
                 : "Restore failed. Ask the administrator to restore {$safety['file']} manually.");
         }
+        self::regrant($rights);
         return self::finish('Restore', $name, true,
             "Database restored from $name. A safety backup was saved as {$safety['file']}.");
+    }
+
+    /** EXECUTE rights on the database's procedures: [[user, host, procedure], ...] */
+    private static function procedureRights(): array
+    {
+        return Database::rows("SELECT User, Host, Routine_name FROM mysql.procs_priv
+                                WHERE Db = ? AND Routine_type = 'PROCEDURE'
+                                  AND FIND_IN_SET('Execute', Proc_priv)",
+                              [$GLOBALS['dbconfig']['database']], Database::forRole('Maint'));
+    }
+
+    /** Grants the remembered EXECUTE rights again after a restore. */
+    private static function regrant(array $rights): void
+    {
+        $pdo = Database::forRole('Maint');
+        $db  = $GLOBALS['dbconfig']['database'];
+        $id  = fn(string $s) => '`' . str_replace('`', '``', $s) . '`';
+        foreach ($rights as $r) {
+            try {
+                $pdo->exec("GRANT EXECUTE ON PROCEDURE {$id($db)}.{$id($r['Routine_name'])} TO "
+                    . $pdo->quote($r['User']) . '@' . $pdo->quote($r['Host']));
+            } catch (PDOException $e) {
+                error_log('[' . date('c') . '] re-grant failed: ' . $e->getMessage());
+            }
+        }
     }
 
     /**
@@ -205,7 +236,8 @@ final class Maintenance
         $opt = tempnam(sys_get_temp_dir(), 'mlh');
         chmod($opt, 0600);
         file_put_contents($opt, "[client]\nuser=\"$user\"\npassword=\"$pass\"\n"
-            . "socket=\"{$cfg['socket']}\"\nhost=\"{$cfg['host']}\"\nport={$cfg['port']}\n");
+            . ($cfg['host'] === 'localhost' ? "socket=\"{$cfg['socket']}\"\n" : '')
+            . "host=\"{$cfg['host']}\"\nport={$cfg['port']}\n");
 
         $cmd = array_merge([$bin, '--defaults-extra-file=' . $opt], $args, [$cfg['database']]);
         $proc = proc_open($cmd, [0 => ['pipe', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);

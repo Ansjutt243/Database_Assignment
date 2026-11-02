@@ -24,7 +24,7 @@ Log in as **`a.khan`** (Operator), **`u.tariq`** (Technician), **`i.shah`** (Man
 |---|---|
 | [`database/`](database/) | SQL scripts 01–06, run in order |
 | [`app/`](app/) | PHP application. Only `app/public/` is served; `app/cli/` holds scheduled jobs |
-| [`deploy/`](deploy/) | Apache + HTTPS configuration and the nightly-backup schedule |
+| [`deploy/`](deploy/) | Apache + HTTPS configuration, the nightly-backup schedule, and the Railway (cloud) set-up |
 | [`tests/`](tests/) | Performance test (NFR-01) and browser test (NFR-09) with their results |
 | [`docs/`](docs/) | Step-by-step documentation and screenshots |
 
@@ -38,6 +38,7 @@ Log in as **`a.khan`** (Operator), **`u.tariq`** (Technician), **`i.shah`** (Man
 | 4 | [Security, Roles & Permissions](docs/04_Security_Roles_Permissions.md) | Access matrix in the app and in MySQL, authentication, HTTPS |
 | 5 | [System Flows](docs/05_System_Flows.md) | DFDs and a flowchart plus steps for every function |
 | 6 | [Testing](docs/06_Testing.md) | Database, access, end-to-end, maintenance, performance and browser tests |
+| 7 | [Deploying online (Railway)](docs/07_Deployment_Railway.md) | Putting the system online with MySQL 8 + PHP containers, secure passwords, HTTPS |
 
 ## Design Document → implementation status
 

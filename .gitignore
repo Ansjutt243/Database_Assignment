@@ -11,3 +11,18 @@ Part2_Development/deploy/apache/ssl/
 
 # Python cache
 __pycache__/
+
+# Python virtual environment for the browser test
+Part2_Development/tests/.venv/
+
+# Cloud database passwords written by deploy/railway/init_remote_db.sh
+Part2_Development/deploy/railway/app.env
+
+# Node dependencies and Playwright output for the e2e tests
+node_modules/
+Part2_Development/tests/e2e/test-results/
+Part2_Development/tests/e2e/playwright-report/
+
+# Word lock files and raw Playwright artifacts
+~$*
+Part2_Development/tests/e2e/results/raw/

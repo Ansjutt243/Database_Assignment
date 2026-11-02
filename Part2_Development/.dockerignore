@@ -1,0 +1,11 @@
+# Only app/ and deploy/railway/ are needed to build the image
+database/
+docs/
+tests/
+deploy/apache/
+deploy/schedule/
+app/storage/backups/*.sql
+app/storage/logs/*.log
+**/.DS_Store
+**/.venv
+*.md

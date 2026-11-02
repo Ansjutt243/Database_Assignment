@@ -155,7 +155,7 @@ The slowest report (R6, with three result tables) took about 1 second, a fifth o
 
 ## 6. Browser test (NFR-09)
 
-**How to run:** `python3 tests/browser_test.py chrome https://localhost:8443`. This drives a real browser through every main flow, over HTTPS through Apache.
+**How to run:** `./tests/run_browser_test.sh chrome`. This drives a real browser through every main flow, over HTTPS through Apache.
 
 **Chrome 150 (Chromium engine, the same engine as Microsoft Edge): 32 of 32 passed.** Full list: `tests/browser_results_chrome.md`. Screenshots: `docs/screenshots/chrome/` (27 screens). The checks include:
 
@@ -168,7 +168,7 @@ The slowest report (R6, with three result tables) took about 1 second, a fifth o
 * All six reports render; backup works from the Main Control Page; the integrity check runs.
 * There are no JavaScript errors on any page.
 
-**Firefox 147:** the same script supports Firefox (WebDriver BiDi). It could not run inside the development sandbox, which stops Firefox at start-up, so it has to be run on a normal desktop with `python3 tests/browser_test.py firefox`. The pages use only standard HTML5, CSS and plain JavaScript (`fetch`, `querySelector`, `requestSubmit`), all supported by current Chrome, Edge and Firefox.
+**Firefox 147:** the same script supports Firefox (WebDriver BiDi). It could not run inside the development sandbox, which stops Firefox at start-up, so it has to be run on a normal desktop with `./tests/run_browser_test.sh firefox`. The pages use only standard HTML5, CSS and plain JavaScript (`fetch`, `querySelector`, `requestSubmit`), all supported by current Chrome, Edge and Firefox.
 
 **Safari 17.6:** not automated. Safari's WebDriver must first be enabled by an administrator with `safaridriver --enable`.
 
@@ -186,6 +186,7 @@ The slowest report (R6, with three result tables) took about 1 second, a fifth o
 | Report pages showed an extra empty “No data” table | the procedure's final status result was shown as a table | only the report's own tables are shown | PASS |
 | The performance test stopped and left its data behind | `ANALYZE TABLE` returns rows that were not read | rows read; leftovers removed automatically at the next start | PASS |
 | CLI scripts failed silently | the error handler was registered only for web pages | the handler now prints errors in the terminal too | PASS |
+| After a restore, managers could not run reports and the admin could not run the integrity check | MySQL deletes the EXECUTE rights on a procedure when the restore drops and recreates it; earlier tests only checked that operators were still refused | restore records the rights from `mysql.procs_priv` first and grants them again afterwards | PASS (two restores, then report, check, call logging and compact all work) |
 
 ---
 
