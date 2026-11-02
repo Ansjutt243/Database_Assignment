@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Runtime data - never committed (backups contain personal data, logs may too)
+Part2_Development/app/storage/backups/*.sql
+Part2_Development/app/storage/logs/*.log
+
+# Apache runtime files and the private TLS key / certificate
+Part2_Development/deploy/apache/run/
+Part2_Development/deploy/apache/ssl/
+
+# Python cache
+__pycache__/
